@@ -2,7 +2,37 @@
   "permissions": {
     "allow": [
       "Bash(npm --version)",
-      "Bash(git --version)"
+      "Bash(git --version)",
+      "Bash(npm install *)",
+      "Bash(node -e \"console.log\\(Object.keys\\(require\\('/Users/pingguo/Desktop/market-tracking/node_modules/@supabase/ssr/dist/main/index.js'\\)\\)\\)\")",
+      "Bash(npm run *)",
+      "Bash(command -v nvm)",
+      "Read(//Users/pingguo/.nvm/versions/**)",
+      "Bash(command -v n)",
+      "Bash(n --version)",
+      "Bash(command -v volta)",
+      "Bash(npm ls *)",
+      "Bash(npm view *)",
+      "Bash(node -e \"console.log\\(require\\('/Users/pingguo/Desktop/market-tracking/node_modules/@tailwindcss/turbopack/package.json'\\).engines\\)\")",
+      "Bash(node -e \"console.log\\(require\\('/Users/pingguo/Desktop/market-tracking/node_modules/next/package.json'\\).engines\\)\")",
+      "Bash(npx next *)",
+      "Bash(command -v brew)",
+      "Bash(brew list *)",
+      "Bash(brew info *)",
+      "Bash(node -p \"process.platform + ' ' + process.arch\")",
+      "Bash(curl -s https://nodejs.org/dist/index.json)",
+      "Bash(node -e ' *)",
+      "Bash(set -e)",
+      "Bash(curl -fsSL -o /tmp/node.tar.gz https://nodejs.org/dist/v24.22.2/node-v24.22.2-darwin-arm64.tar.gz)",
+      "Bash(tar -xzf /tmp/node.tar.gz -C .local-node --strip-components=1)",
+      "Bash(rm /tmp/node.tar.gz)",
+      "Bash(./.local-node/bin/node --version)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/dashboard --max-time 5)",
+      "Bash(curl -s http://localhost:3000/dashboard --max-time 5)",
+      "Bash(gh auth *)",
+      "Bash(gh --version)",
+      "Bash(npx --yes vercel --version)",
+      "Bash(git add *)"
     ]
   }
 }

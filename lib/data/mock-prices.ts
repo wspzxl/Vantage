@@ -1,0 +1,22 @@
+/** Demo data — not live. Real version: daily price ingestion (Phase: event ingestion). */
+export const mockPrices: Record<string, number> = {
+  BABA: 118.4,
+  PDD: 142.7,
+  JD: 41.2,
+  BIDU: 88.6,
+  NTES: 102.3,
+  BILI: 21.9,
+  TME: 14.8,
+  NIO: 6.1,
+  LI: 27.3,
+  XPEV: 16.8,
+  TCOM: 64.5,
+  YUMC: 47.9,
+  VIPS: 16.2,
+  ZTO: 22.4,
+  HTHT: 38.7,
+  BEKE: 19.5,
+  AAPL: 234.1,
+  TSLA: 312.6,
+  NKE: 76.3,
+};
