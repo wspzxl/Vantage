@@ -14,11 +14,12 @@ const dict = {
   "header.demoPreview": { zh: "演示预览", en: "Demo preview" },
   "header.signOut": { zh: "退出登录", en: "Sign out" },
 
-  "common.demoBanner": {
-    zh: "演示预览 — 示例数据，非实时。",
-    en: "Demo preview — sample data, not live.",
-  },
   "common.estimated": { zh: "预估", en: "est." },
+  "common.sample": { zh: "示例，非实时", en: "sample, not live" },
+  "common.refreshData": { zh: "刷新实时数据", en: "Refresh live data" },
+  "common.refreshing": { zh: "刷新中…", en: "Refreshing…" },
+  "common.refreshDone": { zh: "已刷新，稍后生效", en: "Refreshed — may take a moment to show" },
+  "common.refreshCooldown": { zh: "刚刷新过，请稍后再试", en: "Just refreshed — try again shortly" },
 
   "landing.viewDemo": { zh: "查看 Demo", en: "View demo" },
 
@@ -55,6 +56,10 @@ const dict = {
   "plaza.timelineNoEvents": {
     zh: "追踪的话题暂无已知的催化事件。",
     en: "No known catalysts yet for the topics you follow.",
+  },
+  "plaza.anomaliesSampleNote": {
+    zh: "量价异动信号目前是示例内容，非实时检测。",
+    en: "Volume/price anomaly signals below are sample content, not live detection.",
   },
   "plaza.macroFooterPart1": {
     zh: "想要宏观事件（FOMC/CPI/中国宏观数据）？那些现在在",

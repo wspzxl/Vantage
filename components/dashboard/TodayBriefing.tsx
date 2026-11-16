@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useTracking } from "@/components/tracking/TrackingProvider";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { evaluateTargets } from "@/lib/tracking/evaluate";
@@ -9,23 +11,40 @@ import type { CatalystEvent } from "@/lib/data/types";
 
 const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
 
+type RefreshState = "idle" | "loading" | "done" | "cooldown";
+
 export function TodayBriefing({
   marketOptions,
   events,
+  prices,
   now,
 }: {
   marketOptions: MarketOption[];
   events: CatalystEvent[];
+  prices: Record<string, number>;
   /** Request time, read once on the server and passed down as a plain prop
    *  so this component never calls an impure time function during render. */
   now: number;
 }) {
   const { selectedMarketIds, toggleMarket, watchTargets, followedTickers } = useTracking();
   const { locale, t } = useLocale();
+  const router = useRouter();
+  const [refreshState, setRefreshState] = useState<RefreshState>("idle");
+
+  async function handleRefresh() {
+    setRefreshState("loading");
+    const res = await fetch("/api/refresh-data", { method: "POST" });
+    if (res.status === 429) {
+      setRefreshState("cooldown");
+      return;
+    }
+    setRefreshState("done");
+    router.refresh();
+  }
 
   const selectedMarkets = marketOptions.filter((m) => selectedMarketIds.includes(m.id));
   const unselectedMarkets = marketOptions.filter((m) => !selectedMarketIds.includes(m.id));
-  const triggered = evaluateTargets(watchTargets, locale);
+  const triggered = evaluateTargets(watchTargets, locale, prices);
   const pending = watchTargets.filter((wt) => !triggered.some((h) => h.id === wt.id));
 
   const macroVisible = selectedMarketIds.includes("cn-adr");
@@ -48,16 +67,30 @@ export function TodayBriefing({
 
   return (
     <div className="space-y-6">
-      <div className="rounded border border-amber-200 bg-amber-50 px-4 py-2 text-sm text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-300">
-        {t("common.demoBanner")}
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <h1 className="text-lg font-semibold">
+          {t("nav.todayBriefing")} · {today}
+        </h1>
+        <button
+          onClick={handleRefresh}
+          disabled={refreshState === "loading"}
+          className="shrink-0 rounded border border-zinc-300 px-2 py-0.5 text-xs font-medium hover:bg-zinc-100 disabled:opacity-50 dark:border-zinc-700 dark:hover:bg-zinc-900"
+        >
+          {refreshState === "loading"
+            ? t("common.refreshing")
+            : refreshState === "done"
+              ? t("common.refreshDone")
+              : refreshState === "cooldown"
+                ? t("common.refreshCooldown")
+                : t("common.refreshData")}
+        </button>
       </div>
 
-      <h1 className="text-lg font-semibold">
-        {t("nav.todayBriefing")} · {today}
-      </h1>
-
       <section>
-        <h2 className="mb-2 text-sm font-semibold text-zinc-500">{t("briefing.normalTracking")}</h2>
+        <h2 className="mb-2 text-sm font-semibold text-zinc-500">
+          {t("briefing.normalTracking")}{" "}
+          <span className="text-xs font-normal italic text-zinc-400">({t("common.sample")})</span>
+        </h2>
         {selectedMarkets.length === 0 ? (
           <div className="rounded border border-dashed border-zinc-300 p-3 text-sm text-zinc-500 dark:border-zinc-700">
             <p>{t("briefing.noMarketsSelected")}</p>
@@ -111,6 +144,9 @@ export function TodayBriefing({
             {triggered.map((tt) => (
               <div key={tt.id} className="rounded border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm dark:border-emerald-900/40 dark:bg-emerald-950/30">
                 <span className="font-semibold">{tt.ticker}</span> — {tt.triggeredReason}
+                {tt.condition === "company_move" && (
+                  <span className="ml-1.5 text-xs italic text-zinc-400">({t("common.sample")})</span>
+                )}
               </div>
             ))}
           </div>

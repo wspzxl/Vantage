@@ -86,12 +86,11 @@ export function TopicPlaza({
 
   return (
     <div className="space-y-8">
-      <div className="rounded border border-amber-200 bg-amber-50 px-4 py-2 text-sm text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-300">
-        {t("common.demoBanner")}
-      </div>
-
       <section>
-        <h2 className="mb-2 text-sm font-semibold text-zinc-500">{t("plaza.trending")}</h2>
+        <h2 className="mb-2 text-sm font-semibold text-zinc-500">
+          {t("plaza.trending")}{" "}
+          <span className="text-xs font-normal italic text-zinc-400">({t("common.sample")})</span>
+        </h2>
         <div className="grid gap-2 sm:grid-cols-2">
           {trending.slice(0, 8).map((tr) => {
             const company = byTicker.get(tr.ticker);
@@ -158,6 +157,9 @@ export function TopicPlaza({
           <>
             {timelineAnomalies.length > 0 && (
               <div className="mb-3 space-y-2">
+                <p className="text-xs italic text-zinc-400">
+                  {t("plaza.anomaliesSampleNote")}
+                </p>
                 {timelineAnomalies.map((a) => (
                   <div
                     key={a.id}
