@@ -1,9 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { Noto_Serif_SC } from "next/font/google";
 import { siteConfig } from "@/lib/config/siteConfig";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { LocaleToggle } from "@/components/i18n/LocaleToggle";
+
+const serif = Noto_Serif_SC({
+  variable: "--font-serif-sc",
+  weight: ["600", "700"],
+  subsets: ["latin"],
+});
 
 export default function Home() {
   const { locale, t } = useLocale();
@@ -15,36 +22,46 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative flex flex-1 flex-col items-center bg-zinc-50 px-6 py-16 text-center dark:bg-black">
+    <div
+      className={`${serif.variable} relative flex flex-1 flex-col items-center bg-stone-50 px-6 py-24 text-center dark:bg-black`}
+    >
       <div className="absolute right-6 top-6">
         <LocaleToggle />
       </div>
-      <h1 className="max-w-lg text-3xl font-semibold tracking-tight">
+
+      <h1 className="max-w-xl font-[family-name:var(--font-serif-sc)] text-5xl font-bold tracking-tight text-stone-900 sm:text-6xl dark:text-stone-50">
         {siteConfig.name[locale]}
       </h1>
-      <p className="mt-3 max-w-md text-lg text-zinc-600 dark:text-zinc-400">
+      <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed text-stone-600 sm:text-xl dark:text-stone-300">
         {siteConfig.tagline[locale]}
       </p>
-      <p className="mt-3 max-w-md text-sm text-zinc-500 dark:text-zinc-500">
+      <p className="mt-3 max-w-lg text-base leading-relaxed text-stone-500 dark:text-stone-400">
         {siteConfig.description[locale]}
       </p>
-      <div className="mt-8 flex gap-3">
-        <Link
-          href="/dashboard"
-          className="rounded-full bg-zinc-950 px-5 py-2.5 text-sm font-medium text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
-        >
-          {t("landing.viewDemo")}
-        </Link>
-      </div>
+      <Link
+        href="/dashboard"
+        className="mt-10 border-b-2 border-stone-900 pb-1 text-lg font-semibold text-stone-900 dark:border-stone-50 dark:text-stone-50"
+      >
+        {t("landing.viewDemo")}
+      </Link>
 
-      <div className="mt-14 grid max-w-3xl gap-4 text-left sm:grid-cols-3">
-        {features.map((f) => (
+      <div className="mt-24 h-px w-12 bg-stone-300 dark:bg-stone-700" />
+
+      <div className="mt-14 flex w-full max-w-2xl flex-col text-left">
+        {features.map((f, i) => (
           <div
             key={f.title}
-            className="rounded border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950"
+            className="flex gap-7 border-t border-stone-200 py-8 first:border-t-0 dark:border-stone-800"
           >
-            <div className="text-sm font-semibold">{f.title}</div>
-            <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">{f.body}</p>
+            <div className="w-7 shrink-0 pt-0.5 font-[family-name:var(--font-serif-sc)] text-sm text-stone-300 dark:text-stone-600">
+              {String(i + 1).padStart(2, "0")}
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-stone-900 dark:text-stone-50">{f.title}</h3>
+              <p className="mt-2 max-w-md text-sm leading-relaxed text-stone-500 dark:text-stone-400">
+                {f.body}
+              </p>
+            </div>
           </div>
         ))}
       </div>
