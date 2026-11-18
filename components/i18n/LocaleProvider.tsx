@@ -14,11 +14,11 @@ interface LocaleState {
 const LocaleContext = createContext<LocaleState | null>(null);
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>("zh");
+  const [locale, setLocale] = useState<Locale>("en");
 
   useEffect(() => {
     // One-time sync from localStorage (an external system) on mount, so SSR/hydration
-    // always renders the "zh" default and the stored preference applies right after.
+    // always renders the "en" default and the stored preference applies right after.
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       // eslint-disable-next-line react-hooks/set-state-in-effect
