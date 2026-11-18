@@ -22,6 +22,21 @@ const dict = {
   "common.refreshCooldown": { zh: "刚刷新过，请稍后再试", en: "Just refreshed — try again shortly" },
 
   "landing.viewDemo": { zh: "查看 Demo", en: "View demo" },
+  "landing.feature1Title": { zh: "正常追踪", en: "Markets you track" },
+  "landing.feature1Body": {
+    zh: "一份每日简报，跨境合并美股财报、FOMC/CPI 和中国宏观发布。",
+    en: "One daily briefing spanning US earnings, FOMC/CPI, and China macro releases.",
+  },
+  "landing.feature2Title": { zh: "蹲未来", en: "Stakeouts" },
+  "landing.feature2Body": {
+    zh: "给你真正在意的几只股票设触发条件——到价、或者有相关消息，自动提醒。",
+    en: "Set a price or news trigger on the handful of names you actually care about.",
+  },
+  "landing.feature3Title": { zh: "话题广场", en: "Topic Plaza" },
+  "landing.feature3Body": {
+    zh: "看看大家在追什么，发现同板块的相关标的。",
+    en: "See what others are watching, and surface related names in the same sector.",
+  },
 
   "briefing.normalTracking": { zh: "正常追踪", en: "Markets you track" },
   "briefing.noMarketsSelected": {
