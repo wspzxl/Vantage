@@ -23,7 +23,7 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="flex flex-1 flex-col bg-stone-50 dark:bg-black">
       <DashboardHeader
         userEmail={userEmail}
         isSupabaseConfigured={isSupabaseConfigured}
@@ -31,7 +31,9 @@ export default async function DashboardLayout({
       />
       <DashboardNav />
       <TrackingProvider>
-        <main className="flex-1 px-6 py-6">{children}</main>
+        <main className="flex-1 px-6 py-8">
+          <div className="mx-auto w-full max-w-3xl">{children}</div>
+        </main>
       </TrackingProvider>
     </div>
   );

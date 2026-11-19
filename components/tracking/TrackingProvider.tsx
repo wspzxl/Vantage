@@ -12,6 +12,8 @@ const DEFAULT_TARGETS: WatchTarget[] = [
 
 const DEFAULT_FOLLOWED_TICKERS = ["BABA", "PDD", "JD", "NIO", "BIDU"];
 
+const DEFAULT_NEWS_TOPICS: string[] = ["Pop Mart"];
+
 interface TrackingState {
   selectedMarketIds: string[];
   toggleMarket: (id: string) => void;
@@ -21,6 +23,10 @@ interface TrackingState {
   followedTickers: string[];
   followTicker: (ticker: string) => void;
   unfollowTicker: (ticker: string) => void;
+  /** Free-text company names tracked for a news digest — not limited to the curated universe. */
+  newsTopics: string[];
+  addNewsTopic: (topic: string) => void;
+  removeNewsTopic: (topic: string) => void;
   /** Clears everything, for previewing what a brand-new user actually sees. */
   resetAll: () => void;
 }
@@ -31,6 +37,7 @@ export function TrackingProvider({ children }: { children: ReactNode }) {
   const [selectedMarketIds, setSelectedMarketIds] = useState<string[]>(DEFAULT_MARKET_IDS);
   const [watchTargets, setWatchTargets] = useState<WatchTarget[]>(DEFAULT_TARGETS);
   const [followedTickers, setFollowedTickers] = useState<string[]>(DEFAULT_FOLLOWED_TICKERS);
+  const [newsTopics, setNewsTopics] = useState<string[]>(DEFAULT_NEWS_TOPICS);
 
   function toggleMarket(id: string) {
     setSelectedMarketIds((prev) =>
@@ -57,10 +64,21 @@ export function TrackingProvider({ children }: { children: ReactNode }) {
     setFollowedTickers((prev) => prev.filter((t) => t !== ticker));
   }
 
+  function addNewsTopic(topic: string) {
+    const trimmed = topic.trim();
+    if (!trimmed) return;
+    setNewsTopics((prev) => (prev.includes(trimmed) ? prev : [...prev, trimmed]));
+  }
+
+  function removeNewsTopic(topic: string) {
+    setNewsTopics((prev) => prev.filter((t) => t !== topic));
+  }
+
   function resetAll() {
     setSelectedMarketIds([]);
     setWatchTargets([]);
     setFollowedTickers([]);
+    setNewsTopics([]);
   }
 
   return (
@@ -74,6 +92,9 @@ export function TrackingProvider({ children }: { children: ReactNode }) {
         followedTickers,
         followTicker,
         unfollowTicker,
+        newsTopics,
+        addNewsTopic,
+        removeNewsTopic,
         resetAll,
       }}
     >

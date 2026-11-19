@@ -21,13 +21,24 @@ export function TrackingSettings({
   marketOptions: MarketOption[];
   universe: Company[];
 }) {
-  const { selectedMarketIds, toggleMarket, watchTargets, addTarget, removeTarget, resetAll } = useTracking();
+  const {
+    selectedMarketIds,
+    toggleMarket,
+    watchTargets,
+    addTarget,
+    removeTarget,
+    newsTopics,
+    addNewsTopic,
+    removeNewsTopic,
+    resetAll,
+  } = useTracking();
   const { locale, t } = useLocale();
 
   const [ticker, setTicker] = useState(universe[0]?.ticker ?? "");
   const [condition, setCondition] = useState<WatchCondition>("price_below");
   const [threshold, setThreshold] = useState("");
   const [note, setNote] = useState("");
+  const [topicInput, setTopicInput] = useState("");
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -39,6 +50,12 @@ export function TrackingSettings({
     });
     setThreshold("");
     setNote("");
+  }
+
+  function handleAddTopic(e: React.FormEvent) {
+    e.preventDefault();
+    addNewsTopic(topicInput);
+    setTopicInput("");
   }
 
   return (
@@ -167,6 +184,45 @@ export function TrackingSettings({
             className="rounded bg-zinc-950 px-3 py-1.5 text-sm font-medium text-white dark:bg-white dark:text-zinc-950"
           >
             {t("tracking.addTarget")}
+          </button>
+        </form>
+      </section>
+
+      <section>
+        <h1 className="mb-3 text-lg font-semibold">{t("tracking.companyUpdatesTitle")}</h1>
+        <p className="mb-3 text-xs text-zinc-400">{t("tracking.companyUpdatesHint")}</p>
+
+        {newsTopics.length > 0 && (
+          <div className="mb-4 space-y-2">
+            {newsTopics.map((topic) => (
+              <div
+                key={topic}
+                className="flex items-center justify-between rounded border border-zinc-200 bg-white px-3 py-2 text-sm dark:border-zinc-800 dark:bg-zinc-950"
+              >
+                <span className="font-semibold">{topic}</span>
+                <button
+                  onClick={() => removeNewsTopic(topic)}
+                  className="text-xs text-zinc-400 underline hover:text-zinc-700 dark:hover:text-zinc-200"
+                >
+                  {t("tracking.delete")}
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <form onSubmit={handleAddTopic} className="flex gap-2">
+          <input
+            value={topicInput}
+            onChange={(e) => setTopicInput(e.target.value)}
+            placeholder={t("briefing.addTopicPlaceholder")}
+            className="flex-1 rounded border border-zinc-300 px-2 py-1.5 text-sm dark:border-zinc-700 dark:bg-zinc-900"
+          />
+          <button
+            type="submit"
+            className="shrink-0 rounded bg-zinc-950 px-3 py-1.5 text-sm font-medium text-white dark:bg-white dark:text-zinc-950"
+          >
+            {t("briefing.addTopicButton")}
           </button>
         </form>
       </section>

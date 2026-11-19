@@ -15,7 +15,7 @@ export function DashboardNav() {
   const pathname = usePathname();
   const { t } = useLocale();
   return (
-    <nav className="flex gap-1 border-b border-zinc-200 px-6 dark:border-zinc-800">
+    <nav className="flex gap-1 border-b border-stone-200 px-6 dark:border-stone-800">
       {TABS.map((tab) => {
         const active = pathname === tab.href;
         return (
@@ -24,8 +24,8 @@ export function DashboardNav() {
             href={tab.href}
             className={`-mb-px border-b-2 px-3 py-2 text-sm font-medium transition-colors ${
               active
-                ? "border-zinc-950 text-zinc-950 dark:border-white dark:text-white"
-                : "border-transparent text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300"
+                ? "border-stone-900 text-stone-900 dark:border-stone-50 dark:text-stone-50"
+                : "border-transparent text-stone-500 hover:text-stone-800 dark:hover:text-stone-300"
             }`}
           >
             {t(tab.labelKey)}

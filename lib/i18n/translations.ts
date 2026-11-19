@@ -40,9 +40,11 @@ const dict = {
 
   "briefing.normalTracking": { zh: "正常追踪", en: "Markets you track" },
   "briefing.noMarketsSelected": {
-    zh: "还没选市场，先加一个试试：",
-    en: "No markets selected yet — try adding one:",
+    zh: "还没追踪任何市场或公司 — 选一个市场试试：",
+    en: "No markets or companies tracked yet — try adding a market:",
   },
+  "briefing.orTrackCompanyPart1": { zh: "或者去", en: "Or track a company in" },
+  "briefing.orTrackCompanyPart2": { zh: "追踪一家公司。", en: "." },
   "briefing.stakeoutPrefix": { zh: "蹲未来 · 已触发目标", en: "Stakeouts · Triggered" },
   "briefing.noTargetsPart1": { zh: "还没设置追踪目标 — 去", en: "No stakeout targets yet — check" },
   "briefing.noTargetsPart2": { zh: "看看大家在追什么，或去", en: "to see what others are tracking, or add one yourself in" },
@@ -55,6 +57,14 @@ const dict = {
     en: "No known catalysts in the next 7 days.",
   },
   "briefing.moreInPlaza": { zh: "去话题广场追踪更多 →", en: "Track more in the Topic Plaza →" },
+  "briefing.newsSourceNote": {
+    zh: "公司卡片的「了解详情」来自 Google News 搜索结果，自动匹配，未经人工核实。",
+    en: "\"View details\" on company cards links to Google News search results — automatically matched, not manually verified.",
+  },
+  "briefing.addTopicPlaceholder": { zh: "输入公司名字，比如 泡泡玛特", en: "Company name, e.g. Pop Mart" },
+  "briefing.addTopicButton": { zh: "追踪", en: "Track" },
+  "briefing.learnMore": { zh: "了解详情", en: "View details" },
+  "briefing.newsLoading": { zh: "加载中…", en: "Loading…" },
 
   "plaza.trending": { zh: "热门追踪", en: "Trending" },
   "plaza.followersSuffix": { zh: "人在追", en: "following" },
@@ -111,6 +121,11 @@ const dict = {
   "tracking.priceLabel": { zh: "价格", en: "Price" },
   "tracking.noteLabel": { zh: "备注（可选）", en: "Note (optional)" },
   "tracking.addTarget": { zh: "添加目标", en: "Add target" },
+  "tracking.companyUpdatesTitle": { zh: "公司动态 · 追踪话题", en: "Company updates · Tracked topics" },
+  "tracking.companyUpdatesHint": {
+    zh: "输入任意公司名字（不限于上面的精选名单），今日简报里会显示它的最新新闻。",
+    en: "Add any company name (not limited to the curated list above) — today's briefing will show its latest news.",
+  },
 
   "condition.price_below": { zh: "跌破价格", en: "Drops below price" },
   "condition.price_above": { zh: "突破价格", en: "Breaks above price" },
