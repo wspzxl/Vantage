@@ -92,6 +92,11 @@ export function TrackingSettings({
           })}
         </div>
         <p className="mt-2 text-xs text-zinc-400">{t("tracking.marketPushHint")}</p>
+        <p className="mt-1 text-xs text-zinc-400">
+          {t("tracking.marketNotListedPart1")}{" "}
+          <a href="#other-tracking" className="underline">{t("tracking.otherTrackingTitle")}</a>
+          {t("tracking.marketNotListedPart2")}
+        </p>
       </section>
 
       <section>
@@ -188,9 +193,9 @@ export function TrackingSettings({
         </form>
       </section>
 
-      <section>
-        <h1 className="mb-3 text-lg font-semibold">{t("tracking.companyUpdatesTitle")}</h1>
-        <p className="mb-3 text-xs text-zinc-400">{t("tracking.companyUpdatesHint")}</p>
+      <section id="other-tracking">
+        <h1 className="mb-3 text-lg font-semibold">{t("tracking.otherTrackingTitle")}</h1>
+        <p className="mb-3 text-xs text-zinc-400">{t("tracking.otherTrackingHint")}</p>
 
         {newsTopics.length > 0 && (
           <div className="mb-4 space-y-2">

@@ -156,7 +156,10 @@ export function TopicPlaza({
         ) : (
           <>
             {timelineAnomalies.length > 0 && (
-              <div className="mb-3 space-y-2">
+              <div className="mb-4 space-y-2">
+                <h3 className="text-xs font-semibold uppercase tracking-wide text-zinc-400">
+                  {t("plaza.anomaliesHeading")}
+                </h3>
                 <p className="text-xs italic text-zinc-400">
                   {t("plaza.anomaliesSampleNote")}
                 </p>
@@ -178,6 +181,9 @@ export function TopicPlaza({
               <p className="text-sm text-zinc-500">{t("plaza.timelineNoEvents")}</p>
             ) : (
               <div className="space-y-4">
+                <h3 className="text-xs font-semibold uppercase tracking-wide text-zinc-400">
+                  {t("plaza.upcomingEventsHeading")}
+                </h3>
                 {groupedByDate.map(([date, dayEvents]) => (
                   <div key={date} className="flex gap-4">
                     <div className="w-24 shrink-0 pt-2 text-sm font-medium text-zinc-500">

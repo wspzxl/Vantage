@@ -135,9 +135,9 @@ export function TodayBriefing({
               ))}
             </div>
             <p className="mt-2">
-              {t("briefing.orTrackCompanyPart1")}{" "}
+              {t("briefing.orTrackOtherPart1")}{" "}
               <Link href="/dashboard/tracking" className="underline">{t("nav.trackingSettings")}</Link>
-              {t("briefing.orTrackCompanyPart2")}
+              {t("briefing.orTrackOtherPart2")}
             </p>
           </div>
         ) : (

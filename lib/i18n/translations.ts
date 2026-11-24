@@ -40,11 +40,11 @@ const dict = {
 
   "briefing.normalTracking": { zh: "正常追踪", en: "Markets you track" },
   "briefing.noMarketsSelected": {
-    zh: "还没追踪任何市场或公司 — 选一个市场试试：",
-    en: "No markets or companies tracked yet — try adding a market:",
+    zh: "还没追踪任何市场或其他话题 — 选一个市场试试：",
+    en: "No markets or other topics tracked yet — try adding a market:",
   },
-  "briefing.orTrackCompanyPart1": { zh: "或者去", en: "Or track a company in" },
-  "briefing.orTrackCompanyPart2": { zh: "追踪一家公司。", en: "." },
+  "briefing.orTrackOtherPart1": { zh: "或者去", en: "Or track something else in" },
+  "briefing.orTrackOtherPart2": { zh: "追踪其他话题。", en: "." },
   "briefing.stakeoutPrefix": { zh: "蹲未来 · 已触发目标", en: "Stakeouts · Triggered" },
   "briefing.noTargetsPart1": { zh: "还没设置追踪目标 — 去", en: "No stakeout targets yet — check" },
   "briefing.noTargetsPart2": { zh: "看看大家在追什么，或去", en: "to see what others are tracking, or add one yourself in" },
@@ -58,10 +58,13 @@ const dict = {
   },
   "briefing.moreInPlaza": { zh: "去话题广场追踪更多 →", en: "Track more in the Topic Plaza →" },
   "briefing.newsSourceNote": {
-    zh: "公司卡片的「了解详情」来自 Google News 搜索结果，自动匹配，未经人工核实。",
-    en: "\"View details\" on company cards links to Google News search results — automatically matched, not manually verified.",
+    zh: "「其他」卡片的「了解详情」来自 Google News 搜索结果，自动匹配，未经人工核实。",
+    en: "\"View details\" on Other cards links to Google News search results — automatically matched, not manually verified.",
   },
-  "briefing.addTopicPlaceholder": { zh: "输入公司名字，比如 泡泡玛特", en: "Company name, e.g. Pop Mart" },
+  "briefing.addTopicPlaceholder": {
+    zh: "输入任意话题，比如 泡泡玛特 / 关税政策",
+    en: "Any topic, e.g. Pop Mart or tariff policy",
+  },
   "briefing.addTopicButton": { zh: "追踪", en: "Track" },
   "briefing.learnMore": { zh: "了解详情", en: "View details" },
   "briefing.newsLoading": { zh: "加载中…", en: "Loading…" },
@@ -82,10 +85,12 @@ const dict = {
     zh: "追踪的话题暂无已知的催化事件。",
     en: "No known catalysts yet for the topics you follow.",
   },
+  "plaza.anomaliesHeading": { zh: "异动信号 — 已发生", en: "Anomaly signals — already happened" },
   "plaza.anomaliesSampleNote": {
     zh: "量价异动信号目前是示例内容，非实时检测。",
     en: "Volume/price anomaly signals below are sample content, not live detection.",
   },
+  "plaza.upcomingEventsHeading": { zh: "即将发生的事件", en: "Upcoming events" },
   "plaza.macroFooterPart1": {
     zh: "想要宏观事件（FOMC/CPI/中国宏观数据）？那些现在在",
     en: "Looking for macro events (FOMC/CPI/China macro)? Those show up in",
@@ -113,6 +118,11 @@ const dict = {
     zh: "每天早上推送所选市场的概览简报（当前是网页端展示；邮件推送是后续可选渠道）。",
     en: "A daily morning briefing for the markets you select (shown in-app for now; email is an optional channel later).",
   },
+  "tracking.marketNotListedPart1": {
+    zh: "想追踪的市场不在上面？还没有结构化数据的市场（比如日股），可以先在下面的",
+    en: "Don't see the market you want? One we haven't built structured data for yet (e.g. Japan) can be added below under",
+  },
+  "tracking.marketNotListedPart2": { zh: "里输入追踪。", en: "." },
   "tracking.manageTargetsTitle": { zh: "蹲未来 · 目标管理", en: "Stake-out · Manage targets" },
   "tracking.noTargetsHint": { zh: "还没有追踪目标，下面加一个：", en: "No targets yet — add one below:" },
   "tracking.delete": { zh: "删除", en: "Delete" },
@@ -121,10 +131,10 @@ const dict = {
   "tracking.priceLabel": { zh: "价格", en: "Price" },
   "tracking.noteLabel": { zh: "备注（可选）", en: "Note (optional)" },
   "tracking.addTarget": { zh: "添加目标", en: "Add target" },
-  "tracking.companyUpdatesTitle": { zh: "公司动态 · 追踪话题", en: "Company updates · Tracked topics" },
-  "tracking.companyUpdatesHint": {
-    zh: "输入任意公司名字（不限于上面的精选名单），今日简报里会显示它的最新新闻。",
-    en: "Add any company name (not limited to the curated list above) — today's briefing will show its latest news.",
+  "tracking.otherTrackingTitle": { zh: "其他 · 追踪话题", en: "Other · Tracked topics" },
+  "tracking.otherTrackingHint": {
+    zh: "公司、政策、还没被收录的其他市场——只要还没有结构化数据，都可以在这里输入自由追踪，今日简报里会显示相关新闻。",
+    en: "Companies, policy topics, or any other market we haven't built structured data for yet — add it here and today's briefing will show its latest news.",
   },
 
   "condition.price_below": { zh: "跌破价格", en: "Drops below price" },
